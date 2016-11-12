@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="groupsilverback">#cccccc</color>
+    <color name="grouptextcolor">#100f45</color>
+    <color name="groupdivider">#5e5e5e</color>
+    <color name="childdivider">#cccccc</color>
+    <color name="itembackcolor">#fafafa</color>
+    <color name="blackcolor">#000000</color>
+    <color name="whitecolor">#ffffff</color>
+    <color name="shapecolor">#0f769a</color>
+    <color name="redcolor">#cc0000</color>
+    
+    
+</resources>

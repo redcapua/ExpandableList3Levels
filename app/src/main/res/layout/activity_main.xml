@@ -1,0 +1,25 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whitecolor"
+    android:textColor="@color/blackcolor"
+    tools:context="${packageName}.${activityClass}" >
+
+    <ExpandableListView
+        android:id="@+id/elv01"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:childDivider="@color/childdivider"
+        android:childIndicatorEnd="135dp"
+        android:childIndicatorStart="15dp"
+        android:groupIndicator="@android:color/transparent"
+        android:indicatorEnd="195dp"
+        android:indicatorStart="5dp" >
+
+    </ExpandableListView>
+
+</RelativeLayout>

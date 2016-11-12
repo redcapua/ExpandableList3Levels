@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/Vlad/Documents/idev.2016/ExpandableList3levels/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="12963d89660f23341c67836e1254a5375517cd11">
+        <dex dex="/Users/Vlad/Documents/idev.2016/ExpandableList3levels/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_f4fc1243dc843bae262f1fe54c7f976ddd1a2e67/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Vlad/Documents/android/adt-bundle-mac-x86_64-20130522/sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="/Users/Vlad/Documents/idev.2016/ExpandableList3levels/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-v4-19.1.0_26dda82e2495cc4805b1d31364e6e3579971da47/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Vlad/Documents/idev.2016/ExpandableList3levels/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d4c6a573fa5a80c754ad7351de0372ed71741479">
+        <dex dex="/Users/Vlad/Documents/idev.2016/ExpandableList3levels/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_9220d64ca605d459149db3a3f493eab4c0ec8342/classes.dex" />
+    </item>
+
+</items>
