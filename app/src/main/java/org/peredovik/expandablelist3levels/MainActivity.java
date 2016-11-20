@@ -1,25 +1,19 @@
 package org.peredovik.expandablelist3levels;
 
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnGroupExpandListener;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.app.ActionBar;
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseExpandableListAdapter;
-import android.widget.ExpandableListView;
-import android.widget.ExpandableListView.OnGroupExpandListener;
-import android.widget.TextView;
-
 public class MainActivity extends Activity {
 
 	private int lenGroup;
-	private ExpandableListView expList;
+	ExpandableListView expList;
 	String[] groupsLevel1 = new String[] {"Messaging", "Projects", "Human Resources", "", "Feedback", "Synchronization", "About", "Logout", ""};
 	String[] groupsLevel21 = new String[] {"Messaging", "Inbox", "To: me", "To-do", "Archives", "Organizer", "Calendar", "My groups", "Join a group"};
 	String[] groupsLevel22 = new String[] {"Project1", "Project2", "Project3"};
@@ -115,7 +109,8 @@ public class MainActivity extends Activity {
         		for (int i = 0; i < lenGroup; i++) {
                 	if (i != groupPosition) {
                 		expList.collapseGroup(i);
-                	}
+						Log.d("RQ", "collapse group:" + i);
+					}
             	}
 
         	}

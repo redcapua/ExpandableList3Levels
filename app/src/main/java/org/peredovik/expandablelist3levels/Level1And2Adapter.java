@@ -31,52 +31,50 @@ public class Level1And2Adapter extends BaseExpandableListAdapter {
 
     @Override
     public int getGroupCount() {
-        // TODO Auto-generated method stub
 
         return mGroupsLevel1.length;
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        // TODO Auto-generated method stub
 
         return mGroupsLevel2.get(groupPosition).size();
     }
 
     @Override
     public Object getGroup(int groupPosition) {
-        // TODO Auto-generated method stub
+
         return mGroupsLevel1[groupPosition];
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        // TODO Auto-generated method stub
+
         return mGroupsLevel2.get(groupPosition).get(childPosition);
     }
 
     @Override
     public long getGroupId(int groupPosition) {
-        // TODO Auto-generated method stub
+
         return groupPosition;
     }
 
     @Override
     public long getChildId(int groupPosition, int childPosition) {
-        // TODO Auto-generated method stub
+
         return childPosition;
     }
 
     @Override
     public boolean hasStableIds() {
-        // TODO Auto-generated method stub
+
         return true;
     }
 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
-        // TODO Auto-generated method stub
+
 
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -94,7 +92,7 @@ public class Level1And2Adapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
-        // TODO Auto-generated method stub
+
         TextView textGroup;
 
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -129,7 +127,7 @@ public class Level1And2Adapter extends BaseExpandableListAdapter {
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
-        // TODO Auto-generated method stub
+
         return true;
     }
 
