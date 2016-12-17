@@ -2,7 +2,9 @@ package org.peredovik.expandablelist3levels;
 
 
 import android.content.Context;
+import android.os.SystemClock;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.espresso.Espresso;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.widget.ExpandableListView;
@@ -16,8 +18,17 @@ import org.junit.runner.RunWith;
 import java.util.ArrayList;
 import java.util.Map;
 
+import static android.support.test.espresso.Espresso.onData;
+import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.typeText;
+import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
+import static android.support.test.espresso.matcher.ViewMatchers.isChecked;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
+import static org.hamcrest.core.IsAnything.anything;
+import static org.junit.Assert.assertTrue;
 
 
 @RunWith(AndroidJUnit4.class)
@@ -33,101 +44,79 @@ public class androidTest {
     Map<String, String> mLevel2Bold;
     ExpandableListView expList;
 
-    @Before
-    public void Level1And2AdapterPrepare(){
-
-        Context applicationContext = mainActivityRule.getActivity().getApplicationContext();
-
-        mGroupsLevel1 = mainActivityRule.getActivity().groupsLevel1;
-        mGroupsLevel2 = mainActivityRule.getActivity().groupLevel2Data;
-        mLevel2Bold = mainActivityRule.getActivity().groupLevel2;
-
-        l2l3Adapter = new Level1And2Adapter(applicationContext, mGroupsLevel1, mGroupsLevel2, mLevel2Bold);
-
-    }
-
-    @Test
-    public void TargetContext(){
-
-        Context appContext = InstrumentationRegistry.getTargetContext();
-
-        Assert.assertEquals("org.peredovik.expandablelist3levels", appContext.getPackageName());
-
-    }
-
-    @Test
-    public void Level1And2AdapterSimpleCreatedProperly() {
-
-        MainActivity mainActivity = mainActivityRule.getActivity();
-
-        Level1And2Adapter l2l3Adapter = mainActivity.adapter2;
-
-        assertNotNull(l2l3Adapter);
-
-    }
 
 
     @Test
-    public void Level1And2AdapterCreatedProperly() {
+    public void verifyFirstGroupExpand() {
 
-        assertNotNull(l2l3Adapter);
+        onData(anything()).inAdapterView(withId(R.id.elv01)).atPosition(0).perform(click());
 
-    }
-
-    @Test
-    public void Level1And2AdapterCorrectGroupsCount() {
-
-        assertEquals(mGroupsLevel1.length, l2l3Adapter.getGroupCount());
-
-    }
-
-
-    @Test
-    public void Level1And2AdapterExpandListener() throws Exception{
-
-        expList = mainActivityRule.getActivity().expList;
-
+        SystemClock.sleep(5000);
 
         mainActivityRule.getActivity().runOnUiThread(new Runnable(){
             @Override
             public void run(){
 
-                expList = mainActivityRule.getActivity().expList;
-                expList.expandGroup(0);
-
-                boolean isExpanded = expList.isGroupExpanded(0);
-                boolean isExpandedFalse = expList.isGroupExpanded(1);
-
+                boolean isExpanded = mainActivityRule.getActivity().expList.isGroupExpanded(0);
                 assertEquals(isExpanded, true);
-                assertEquals(isExpandedFalse, false);
+
+                isExpanded = mainActivityRule.getActivity().expList.isGroupExpanded(1);
+                assertEquals(isExpanded, false);
+
+                mainActivityRule.getActivity().expList.collapseGroup(0);
 
             }
         });
 
     }
 
-
     @Test
-    public void Level1And2AdapterGetGroupValue(){
+    public void verifySecondGroupExpand() {
 
-        String groupName = mGroupsLevel1[0];
+        onData(anything()).inAdapterView(withId(R.id.elv01)).atPosition(1).perform(click());
 
-        assertEquals(l2l3Adapter.getGroup(0), groupName);
+        SystemClock.sleep(5000);
+
+        mainActivityRule.getActivity().runOnUiThread(new Runnable(){
+            @Override
+            public void run(){
+
+                boolean isExpanded = mainActivityRule.getActivity().expList.isGroupExpanded(1);
+                assertEquals(isExpanded, true);
+
+                isExpanded = mainActivityRule.getActivity().expList.isGroupExpanded(2);
+                assertEquals(isExpanded, false);
+
+                mainActivityRule.getActivity().expList.collapseGroup(1);
+
+            }
+        });
 
     }
 
+//    @Test
+//    public void verifySeventhGroupExpand() {
+//
+//        onData(anything()).inAdapterView(withId(R.id.elv01)).atPosition(1).perform(click());
+//
+//        SystemClock.sleep(1000);
+//
+//        onData(anything()).inAdapterView(withId(R.id.elv01)).atPosition(7).perform(click());
+//
+//        SystemClock.sleep(5000);
+//
+//        mainActivityRule.getActivity().runOnUiThread(new Runnable(){
+//            @Override
+//            public void run(){
+//
+//                boolean isExpanded = mainActivityRule.getActivity().expList.isGroupExpanded(7);
+//                assertEquals(isExpanded, false);
+//
+//            }
+//        });
+//
+//    }
 
-    @Test
-    public void Level1And2AdapterGetChildValue(){
 
-        Map<String, String> childItem = mGroupsLevel2.get(0).get(0);
-        String childName = childItem.get("dataItemsLevel2");
-
-        Map<String, String> childItem1 = (Map<String, String>)l2l3Adapter.getChild(0, 0);
-        String childName1 = childItem1.get("dataItemsLevel2");
-
-        assertEquals(childName1, childName);
-
-    }
 
 }
